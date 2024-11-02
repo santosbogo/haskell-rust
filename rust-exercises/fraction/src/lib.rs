@@ -38,7 +38,6 @@ pub fn hcf(a: i32, b: i32) -> i32 {
 
 /// Create a fraction simplifying with the arguments simplified by the `hcf`
 pub fn simplify(n: i32, d: i32) -> Fraction {
-    // (n, d)
     let divisor = hcf(n, d);
     let (num, den) = (n / divisor, d / divisor);
 
