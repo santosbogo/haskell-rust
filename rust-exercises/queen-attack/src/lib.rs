@@ -8,16 +8,28 @@ pub struct Queen {
 
 impl ChessPosition {
     pub fn new(rank: i32, file: i32) -> Option<Self> {
-        panic!("Implement me");
+        if rank >= 0 && rank <= 7 && file >= 0 && file <= 7 {
+            Some(ChessPosition(rank, file))
+        } else {
+            None
+        }
     }
 }
 
 impl Queen {
     pub fn new(position: ChessPosition) -> Self {
-        panic!("Implement me");
+        Self{position}
     }
 
     pub fn can_attack(&self, other: &Queen) -> bool {
-    panic!("Implement me");
-}
+        if self.position.0 == other.position.0{
+            true
+        } else if self.position.1 == other.position.1 {
+            true
+        } else if (self.position.0 - other.position.0).abs() == (self.position.1 - other.position.1).abs() {
+            true
+        } else {
+            false
+        }
+    }
 }
