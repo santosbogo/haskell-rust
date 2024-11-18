@@ -1,18 +1,18 @@
-name: fraction
+name: run-length-encoding
 version: 1.0.0.0
 
 dependencies:
   - base
 
 library:
-  exposed-modules: Fraction
+  exposed-modules: RunLengthEncoding
   source-dirs: src
-  ghc-options: -Wall
+  ghc-options: -Wall -Wno-type-defaults
 
 tests:
   test:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - fraction
+      - run-length-encoding
       - hspec
