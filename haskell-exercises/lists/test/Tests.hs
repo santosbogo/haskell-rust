@@ -7,7 +7,6 @@ import Lists (
    member, union, intersection, difference,
    insert, insertionSort,
    binaryToDecimal, toDecimal, toDec,
-   decimal,
    firsts,
    binaryAdd)
 
@@ -84,9 +83,9 @@ main = hspec $ do
     it "String Base 16" $ do 
       toDec 16 "1F" `shouldBe` 31
     it "String 8" $ do
-      decimal 8 "73" `shouldBe` 59
+      toDec 8 "73" `shouldBe` 59
     it "String Base 16" $ do 
-      decimal 16 "1F" `shouldBe` 31
+      toDec 16 "1F" `shouldBe` 31
       
   describe "firsts" $ do
     it "[1, 2, 5]" $ do
