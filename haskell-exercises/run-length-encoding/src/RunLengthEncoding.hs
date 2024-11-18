@@ -1,7 +1,18 @@
-module RunLengthEncoding (encode) where
+module RunLengthEncoding (encode, encode2, Element(..)) where
 
-encode:: String -> [(Int, Char)]
+encode :: String -> [(Int, Char)]
 encode [] = []
-encode (s:string) =
-    let (prefix, rest) = span (== s) string
-    in (1 + length prefix, s)  : encode rest
+encode (c:word) =
+    let (prefix, rest) = span (== c) word
+    in (1 + length prefix, c)  : encode rest
+
+
+data Element =  One  Char | Repeat Char Int deriving(Show, Eq)
+
+encode2 :: String -> [Element]
+encode2 word = [write c n | (n, c) <- encode word]
+
+write :: Char -> Int -> Element
+write c n
+    | n == 1 = One c
+    | otherwise = Repeat c n
