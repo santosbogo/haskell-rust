@@ -1,11 +1,11 @@
-name: run-length-encoding
+name: parcial2022
 version: 1.0.0.0
 
 dependencies:
   - base
 
 library:
-  exposed-modules: RunLengthEncoding
+  exposed-modules: Parcial
   source-dirs: src
   ghc-options: -Wall -Wno-type-defaults
 
@@ -14,5 +14,5 @@ tests:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - run-length-encoding
+      - parcial2022
       - hspec
