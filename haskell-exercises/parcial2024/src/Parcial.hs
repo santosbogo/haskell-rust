@@ -32,7 +32,7 @@ value :: Tree a -> a
 value (Leaf a) = a
 value (Node _ v _) = v
 
--- 3.2 Tree an instance of Show
+-- 3.2 Tree an instance of Show paglia
 instance Show a => Show (Tree a) where
   show (Leaf x) = show x
   show (Node l v r) = "(" ++ show l ++ " " ++ show v ++ " " ++ show r ++ ")"
