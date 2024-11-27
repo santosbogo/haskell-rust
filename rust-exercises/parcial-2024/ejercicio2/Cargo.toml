@@ -1,0 +1,9 @@
+[package]
+edition = "2018"
+name = "ejercicio2"
+version = "2.2.0"
+
+
+[[bin]]
+name = "ejercicio2"
+path = "src/lib.rs"
