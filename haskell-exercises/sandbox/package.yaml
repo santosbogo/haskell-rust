@@ -1,18 +1,18 @@
-name: template
+name: sandbox
 version: 1.0.0.0
 
 dependencies:
   - base
 
 library:
-  exposed-modules: Main
+  exposed-modules: Sandbox
   source-dirs: src
   ghc-options: -Wall -Wno-type-defaults
 
 tests:
   test:
-    main: Main.hs
+    main: Tests.hs
     source-dirs: test
     dependencies:
-      - template
+      - sandbox
       - hspec
