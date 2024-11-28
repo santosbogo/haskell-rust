@@ -1,5 +1,5 @@
 module Sandbox () where
-
+import qualified Data.Map as Map
 
 --LIST COMPREHENSIONS
 --[ expression | generators | filters ]
@@ -102,28 +102,27 @@ sumTree (Node x left right) = x + sumTree left + sumTree right
 
 --TYPE CLASSES: Its like an interface
 --Show
-class Show a where
-    show :: a -> String
+    --class Show a where
+    --    show :: a -> String
 --Eq
-class Eq a where
-    (==) :: a -> a -> Bool
-    (/=) :: a -> a -> Bool
-    x /= y = not (x == y)
+    --class Eq a where
+    --    (==) :: a -> a -> Bool
+    --    (/=) :: a -> a -> Bool
+    --    x /= y = not (x == y)
 --Ord
-class Ord a where
-    (>), (<), (<=), (>=) :: a -> a -> Bool
-    max, min             :: a -> a -> a
-    compare              :: a -> a -> Ordering
+    --class Ord a where
+    --    (>), (<), (<=), (>=) :: a -> a -> Bool
+    --    max, min             :: a -> a -> a
+    --    compare              :: a -> a -> Ordering
 --Num
-class  Num a  where
-    (+), (-), (*)       :: a -> a -> a
-    negate              :: a -> a         -- negate x == (-x)
-    abs                 :: a -> a
-    signum              :: a -> a
-    fromInteger         :: Integer -> a
+    --class  Num a  where
+    --    (+), (-), (*)       :: a -> a -> a
+    --    negate              :: a -> a         -- negate x == (-x)
+    --    abs                 :: a -> a
+    --    signum              :: a -> a
+    --    fromInteger         :: Integer -> a
 
 --Implementation
-
 data Match = String :-: String
 
 instance Show Match where
@@ -144,6 +143,33 @@ maximumM [] = Nothing
 maximumM l  = Just $ foldr1 max l
 
 --Either
-maximumE :: (Ord a) => [a] -> Either String a
-maximumE [] = Left "Trying to get maximum of an empty list"
-maximumE l  = Right $ foldr1 max l
+maximumErr :: (Ord a) => [a] -> Either String a
+maximumErr [] = Left "Trying to get maximum of an empty list"
+maximumErr l  = Right $ foldr1 max l
+
+--MAPS
+fruits = Map.fromList[("Apples", 100), ("Oranges", 10)]
+
+--Insert
+moreFruits = Map.insert "Bananas" 1000 fruits
+
+--Search
+apples = Map.lookup "Apples" fruits
+--Just 100
+bananas = Map.lookup "Bananas" fruits
+--Nothing
+
+--Search returning a default value if not found
+defaultNotFound = Map.findWithDefault 0 "Bananas" fruits
+
+--Contains key
+containsApple = Map.member "Apples" fruits
+
+--Delete
+withoutOranges = Map.delete "Oranges" fruits
+
+--Combine
+fruitSalad = Map.delete "Oranges" $ Map.insert "Bananas" 300 moreFruits
+
+--Union
+fruitsAndSalad = Map.union fruitSalad fruits
